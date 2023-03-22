@@ -18,6 +18,13 @@ def encode_password(string_data):
     return encoded_password
 
 
+def decode_password(string_data):
+	decoded_password = ''
+	for digit in string_data:
+		decoded_password += str((int(digit) + 7) % 10)
+	return decoded_password
+
+
 def menu():
     print('Menu\n'
           '-------------\n'
@@ -45,7 +52,8 @@ if __name__ == '__main__':
                 stored_encoded_password = encode_password(password_input)
                 print('Your password has been encoded and stored!\n')
             elif user_input == 2:
-                print("NOT YET IMPLEMENTED")
+                stored_decoded_password = decode_password(stored_encoded_password)
+                print('The encoded password is ', stored_encoded_password, ', and the original password is ', stored_decoded_password, '.', sep='')
             elif user_input == 3:
                 cont = False
 
